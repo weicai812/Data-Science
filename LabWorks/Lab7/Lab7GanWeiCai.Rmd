@@ -1,0 +1,63 @@
+---
+title: "<u>**Lab 7**</U>"
+author: "Gan Wei Cai (269979)"
+date: "13/12/2020"
+output:
+  html_document: default
+params:
+  Name:
+    label: Name
+    value: ' '
+    input: text
+  Weight:
+    label: Weight
+    value: ' '
+    input: numeric
+  Height:
+    label: Height
+    value: ' '
+    input: numeric
+---
+
+### <u>**Introduction**</u>
+This is Lab 7 assignment that use a rmarkdown document to calculate the BMI.  
+The user have to enter his/her name, weight, and height.
+
+### <u>**Description of Function**</u>
+Create a function named BMI with two argument which is weight and height.
+The function should return two values which is status and BMI value. 
+Depending the BMI value, a person can be categorized as 
+underweight (BMI < 18.5), normal (18.5 ≤ BMI <25), overweight (25 ≥ BMI < 30),
+or obese (BMI ≥ 30).
+
+```{r,setup,include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{R}
+BMI<-function(weight,height){
+  BMI_value <- round(weight/(height^2),1)
+  
+  if(BMI_value<18.5){
+    status<-"underweight"
+  }
+  if(BMI_value>=18.5&&BMI_value<25){
+    status<-"normal"
+  }
+  if(BMI_value>=25&&BMI_value<30){
+    status<-"overweight"
+  }
+  if(BMI_value>=30){
+    status<-"obese"
+  }
+  result <- list(BMI_value,status)
+  return(result)
+}
+
+x<-BMI(params$Weight,params$Height)
+```
+### <u>**Result**</u>
+After the BMI function calculate the BMI, it will print the result as below.
+```{R}
+print(paste(paste(params$Name,"'s weight is",sep = ""),x[[2]],"and BMI is",x[[1]]))
+```
