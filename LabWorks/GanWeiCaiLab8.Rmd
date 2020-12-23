@@ -1,0 +1,66 @@
+---
+title: "Lab 8"
+author: "Gan Wei Cai 269979"
+date: "23/12/2020"
+output: html_document
+params:
+  birthdate:
+    label: Select Your Birth Date
+    value: ''
+    input: date
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Part 1
+This function is to calculate the age which we get the input from the parameters.  
+The age is calculate by using as.POSIXlt function to do the subtraction.
+```{r}
+birthDate <- function(birthdate){
+  age <-as.POSIXlt(Sys.Date())$year - as.POSIXlt(birthdate)$year
+  return(age)
+}
+
+```
+
+
+This is the result that we can print out.
+```{r}
+print(paste("The Birth Date is:",params$birthdate))
+print(paste("The Current Date is",Sys.Date()))
+print(paste("The age is",birthDate(params$birthdate)))
+```
+
+# Part 2
+## Question 1
+### How many species are there in the iris data frame?Name the species
+
+By getting the number of count for the species, we can use nlevels function.
+```{r}
+nlevels(iris$Species)
+```
+
+We also can get the name of the species by using the levels function
+```{r}
+levels(iris$Species)
+```
+
+## Question 2
+### Use one of the apply function to calculate the mean of Sepal.Length for all the species.
+
+By using tapply function, we can easily to calculate the mean for Sepal.Length for all the species.
+```{r}
+tapply(iris$Sepal.Length,iris$Species,mean)
+```
+
+## Question 3
+### Use one of the apply function to calculate the sums of the variables Sepal.Length, Sepal.Width, Petal.Length and Petal.Width
+
+We can use the apply function to get the sum for each column but we need to remove the species
+because it is in character. We can use the method that show below to create a new matrix which only consists the column which in numeric
+```{r}
+z <-as.matrix(iris[,-5])
+apply(z,2,sum)
+```
