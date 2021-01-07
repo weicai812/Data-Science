@@ -1,0 +1,96 @@
+---
+title: "Lab 9"
+author: "Gan Wei Cai (269979)"
+date: "7/1/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Question 1
+### Copy the following website’s content to a text file.  Read the text into R, name it as covid19.
+This code show at below is the rvest package required to run this program.  
+We can install the rvest package with the code: install.packages('rvest').
+This package can allow us to read the html from the website.  
+```{r}
+library(rvest)
+```
+We use the web scraping method to read the html from the website and get the 
+content of the website.
+```{r}
+webpage <- read_html('https://www.theedgemarkets.com/article/covid19-malaysia-reports-2068-new-cases')
+results <- webpage %>% html_nodes("p")%>% html_text()
+content <- results[9:21]
+```
+The code show below is how to create a file which the file named Covid19.txt  
+We also can write the content which we get from the website into the file we have 
+created.
+```{r}
+fileConn<-file("Covid19.txt")
+writeLines(c(content), fileConn, sep = "\n\n")
+close(fileConn)
+```
+We can read our text file that have been created by using readLines() function.
+```{r}
+readLines('Covid19.txt')
+```
+
+## Question 2
+###	How many lines are there in the text file?
+Get the number of the line in the text.
+```{r}
+x<-length(readLines('Covid19.txt'))
+print(paste("Number of lines in this text file is",x))
+```
+
+## Question 3
+###	How many textual lines (non-blank) are there in the file? Show only the lines with text.
+Get the number of textual line in the text.
+```{r}
+x<-length(grep(" ", readLines('Covid19.txt')))
+print(paste("The number of textual line is this text file is",x))
+```
+Display the line in text with the textual line.
+```{r}
+grep(" ", readLines('Covid19.txt'),value = TRUE)
+```
+
+## Question 4
+### Show only lines with the word "Malaysia". How many lines?
+
+Display the line with the word "Malaysia" only.
+```{r}
+grep("Malaysia",readLines('Covid19.txt'),value = TRUE)
+```
+Get the number of the line which only with the word "Malaysia" in the text.
+```{r}
+x<-length(grep("Malaysia",readLines('Covid19.txt'),value = TRUE))
+print(paste("The number of line with the word 'Malaysia' is",x))
+```
+
+## Question 5
+### Show lines with digits. (Remove all punctuation and special characters)
+Display the text after removing all the punctuation and special characters in the text.  
+We can use gsub() function to remove and replace the punctuation and special characters in the text.  
+We replace them with a space.
+```{r}
+gsub("[^A-Za-z0-9]", " ", grep("[[:digit:]]",readLines('Covid19.txt'),value = TRUE))
+```
+
+## Question 6
+### Extract digits and add them together. Show the result of the addition
+We can use the stringr package to get the sum for all the digit in the text.
+Before we use the stringr package, we have to install the stringr package.
+Once we have installed the stringr package, we have to get the library for stringr package.
+```{r}
+library(stringr)
+digit<- grep("[[:digit:]]",readLines('Covid19.txt'),value = TRUE)
+digit<- gsub(",", "", digit)
+x<-sum(as.numeric(unlist(str_extract_all(digit,"\\d*\\.*\\d"))))
+print(paste("The sum of the digit in this text file is",x))
+```
+
+
+**Reference from the link https://www.theedgemarkets.com/article/covid19-malaysia-reports-2068-new-cases**
