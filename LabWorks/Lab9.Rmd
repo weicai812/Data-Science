@@ -92,5 +92,4 @@ x<-sum(as.numeric(unlist(str_extract_all(digit,"\\d*\\.*\\d"))))
 print(paste("The sum of the digit in this text file is",x))
 ```
 
-
 **Reference from the link https://www.theedgemarkets.com/article/covid19-malaysia-reports-2068-new-cases**
