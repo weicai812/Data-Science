@@ -12,7 +12,7 @@ PLEASE REFER TO THE [**SOURCE FILE**](https://github.com/weicai812/Data-Science/
 REFER THE FULL DOCUMENTATION IN [**RPUBS**](https://rpubs.com/weicai0812/707181)  
 **FOR REFERENCES PURPOSE ONLY!**
 
-## Lab8 Assignment
+## Lab9 Assignment
 PLEASE REFER TO THE [**SOURCE FILE**](https://github.com/weicai812/Data-Science/blob/main/LabWorks/Lab9.Rmd)  
-REFER THE FULL DOCUMENTATION IN [**RPUBS**](https://rpubs.com/weicai0812/707181)  
+REFER THE FULL DOCUMENTATION IN [**RPUBS**](https://rpubs.com/weicai0812/710751)  
 **FOR REFERENCES PURPOSE ONLY!**
