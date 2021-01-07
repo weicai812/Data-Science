@@ -1,6 +1,6 @@
 ---
 title: "Lab 7"
-author: "Gan Wei Cai 269979"
+author: "User"
 date: "`r format(Sys.time(), '%d %b %Y %H:%M:%S')`"
 output: slidy_presentation
 footer: Created by Gan Wei Cai
