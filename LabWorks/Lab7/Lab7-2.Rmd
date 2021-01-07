@@ -1,6 +1,6 @@
 ---
 title: "<u>**Lab 7**</U>"
-author: "Gan Wei Cai (269979)"
+author: "User"
 date: "13/12/2020"
 output:
   html_document: default
