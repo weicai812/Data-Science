@@ -1,6 +1,6 @@
 ---
 title: "Lab 9"
-author: "Gan Wei Cai (269979)"
+author: "User"
 date: "7/1/2021"
 output: html_document
 ---
